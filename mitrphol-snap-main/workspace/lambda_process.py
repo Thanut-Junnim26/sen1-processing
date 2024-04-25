@@ -20,7 +20,7 @@ def processing(mod: str, f: str, d: str, m: str, y: str, de=0, me=0, ye=0):
         entrypoint=['python3', '/root/sentinel_process/workspace/coper2S1.py', '-m', f'{mod}', '-f', f'{f}', '-ds', f'{d}', '-ms', f'{m}', '-ys', f'{y}'],
         
         # entrypoint=['cd', '/root/sentinel_process/root/sentinel_process/workspace/result/'],
-        role=YOUR_ROLE,
+        role=YOUR_ROLE_ACCESS,
         image_uri=YOUR_DOCKER_IMAGE_FROM_ECR,
         instance_count=1,
         instance_type=COMPUTE_TYPE, 
