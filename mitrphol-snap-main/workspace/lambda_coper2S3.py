@@ -15,7 +15,7 @@ today = datetime.now()
 s3_client = boto3.client("s3")
 FACTORY = ["MPK", "MPL", "MPV", "MDC", "MAC", "MSB", "MKS"]
 # FACTORY = ["MKS"]
-BUCKET = "mitrphol-satellite-207185859506"
+BUCKET = YOUR_BUCKET
 
 # # #########################################################
 
@@ -54,8 +54,8 @@ def docker_process(book_args: dict()):
         Processor_Job1 = Processor(
             entrypoint = ['python3', '/root/sentinel_process/workspace/process.py', '-d', book_args['DAY'], '-m', book_args['MONTH'], '-y', book_args['YEAR'], '-f', book_args['FAC'], '-or', book_args['ORBIT'], '-p', book_args['PROD']],
             # entrypoint=['cd', '/root/sentinel_process/root/sentinel_process/workspace/result/'],
-            role="arn:aws:iam::207185859506:role/AmazonSageMaker-ExecutionRole-FarmFocus",
-            image_uri="207185859506.dkr.ecr.ap-southeast-1.amazonaws.com/sen1-snap-prod:latest",
+            role=YOUR_ROLE_ACCESS,
+            image_uri=YOUR_DOCKER_IMAGE_FROM_ECR,
             instance_count=1,
             instance_type=COMPUTE_TYPE, 
             volume_size_in_gb=30,
