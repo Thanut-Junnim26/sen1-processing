@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 import json
 import boto3
 
+ACCESS_ID = YOUR_ACCESS_KEY_ID
+SECRET_ID = YOUR_SECRET_ACCESS_KEY_ID
 
 def main(event: dict, factory: str):
 
@@ -92,8 +94,8 @@ def list_all_files_in_product(event: dict, file_name: str):
 
     s3_sentinel_1 = boto3.client(
         's3',
-        aws_access_key_id='AKIATAPJ5KOZEP4SQB7A',
-        aws_secret_access_key='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'
+        aws_access_key_id=ACCESS_ID,
+        aws_secret_access_key=SECRET_ID
         # region_name=s3_sentinel_1_region
     )
     response = s3_sentinel_1.list_objects_v2(
@@ -112,8 +114,8 @@ def get_all_files_in_product_from_s3(key: str):
     s3_sentinel_1 = boto3.client(
         's3',
         region_name=s3_sentinel_1_region,
-        aws_access_key_id='AKIATAPJ5KOZEP4SQB7A',
-        aws_secret_access_key='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'
+        aws_access_key_id=ACCESS_ID,
+        aws_secret_access_key=SECRET_ID
     )
 
     response = s3_sentinel_1.get_object(
@@ -123,10 +125,10 @@ def get_all_files_in_product_from_s3(key: str):
 
 
 def put_file_to_dest_s3(data: str, key: str):
-    dest_s3_bucket_name = 'mitrphol-satellite-207185859506'
+    dest_s3_bucket_name = YOUR_BUCKET
 
-    dest_s3 = boto3.client('s3', aws_access_key_id='AKIATAPJ5KOZEP4SQB7A',
-                           aws_secret_access_key='PQI6z+UIWBwOGHyAZNx6llFOWBgkv/vYowg3oKxO')
+    dest_s3 = boto3.client('s3', aws_access_key_id=ACCESS_ID,
+                           aws_secret_access_key=SECRET_ID)
 
     dest_s3.put_object(Body=data, Bucket=dest_s3_bucket_name, Key=key)
     print(f"uploaded to '{dest_s3_bucket_name}/{key}'.")
