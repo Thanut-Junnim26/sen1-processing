@@ -20,8 +20,8 @@ def processing(mod: str, f: str, d: str, m: str, y: str, de=0, me=0, ye=0):
         entrypoint=['python3', '/root/sentinel_process/workspace/coper2S1.py', '-m', f'{mod}', '-f', f'{f}', '-ds', f'{d}', '-ms', f'{m}', '-ys', f'{y}'],
         
         # entrypoint=['cd', '/root/sentinel_process/root/sentinel_process/workspace/result/'],
-        role="arn:aws:iam::207185859506:role/AmazonSageMaker-ExecutionRole-FarmFocus",
-        image_uri="207185859506.dkr.ecr.ap-southeast-1.amazonaws.com/sen1-snap-newversion:latest",
+        role=YOUR_ROLE,
+        image_uri=YOUR_DOCKER_IMAGE_FROM_ECR,
         instance_count=1,
         instance_type=COMPUTE_TYPE, 
         volume_size_in_gb=30,
@@ -90,8 +90,6 @@ def lambda_handler(event, context):
         'body': json.dumps(f'{year} {month} {day}')
     }
 
-# def processing(m: str, f: str, d: str, m: str, year: str):
-#     get_instance()
     
 
 
