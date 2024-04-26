@@ -14,10 +14,10 @@ See [Dockerfile](https://github.com/Thanut-Junnim26/sen1-processing/blob/main/mi
 
     sudo docker run -it --rm --name sen1-snap -v $(pwd):/root/sentinel_process sen1-snap:latest 
     
-    background processing 
+    # background processing 
     sudo docker run -it -d --name sen1-snap -v $(pwd)/workspace/rawdata:/root/sentinel_process/workspace/rawdata sen1-snap:latest
     
-    resume
+    # resume
     docker exec -it gdal-snap:latest bash
 ```
 # Note
