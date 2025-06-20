@@ -1,0 +1,12 @@
+matplotlib
+asyncpg
+geojson
+xmltodict
+shapely
+python-multipart
+rasterio
+numpy
+geopandas
+boto3
+aws
+requests
